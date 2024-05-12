@@ -11,3 +11,4 @@ sidebar_position: 1
 - Chernov Stanislav
   - написать лично: https://t.me/chernov
   - блог автора: https://t.me/chernovdev
+- Maksim Mikheikin
