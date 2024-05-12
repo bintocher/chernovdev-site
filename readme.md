@@ -2,8 +2,6 @@
 
 Основной проект для ведения документации сайта по Qlik - https://chernovdev.ru/docs
 
-
-
 ## Как запустить локально
 ```
 npx docusaurus start

@@ -1,6 +1,7 @@
 ---
 id: features
 sidebar_position: 999999
+unlisted: true
 ---
 
 # 🚑 Примеры для документации

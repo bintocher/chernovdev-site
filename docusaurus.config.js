@@ -89,9 +89,10 @@ const config = {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
             position: 'left',
-            label: 'Qlik документация',
+            label: 'Qlik docs',
           },
-          {to: '/blog', label: 'Блог', position: 'left'},
+          {to: '/docs/tags', label: 'Tags', position: 'left'},
+          {to: '/blog', label: 'Blog', position: 'left'},
           // {
           //   type: 'localeDropdown',position: 'right',
           // },
