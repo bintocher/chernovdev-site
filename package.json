@@ -19,6 +19,7 @@
     "@mdx-js/react": "^3.0.0",
     "clsx": "^2.0.0",
     "docusaurus-lunr-search": "^3.3.2",
+    "docusaurus-plugin-image-zoom": "^2.0.0",
     "docusaurus-plugin-yandex-metrica": "^1.2.1",
     "lunr": "^2.3.9",
     "prism-react-renderer": "^2.3.0",
