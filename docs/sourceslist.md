@@ -14,3 +14,8 @@ unlisted: true
 Данный раздел скрыт в продакшене с помощью `unlisted: true`
 
 ## Источники
+
+- https://community.qlik.com/t5/Official-Support-Articles/How-to-identify-an-object-in-a-Qlik-Sense-app-by-object-id/ta-p/1715142
+- https://bi2business.ru/5-2-krasivye-podpisi-na-vremennoj-osi-derived-fields/
+- https://qlikviewcookbook.com/2024/04/formatting-intervals/
+- https://qlikviewcookbook.com/2023/08/creating-time-groups-in-your-data-model/
