@@ -1,17 +1,17 @@
 name: Node.js build
 
-on [push]
+on: [push]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name Use Node.js
+      - name: Use Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20.x'
       - name: Install dependencies
         run: npm ci
-      - name Build docusaurus
+      - name: Build docusaurus
         run: npm run docusaurus build
