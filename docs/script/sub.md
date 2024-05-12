@@ -1,8 +1,10 @@
 ---
 sidebar_position: 100
+tags: ['function','функция','sub','процедура']
+description: Список изменений
 ---
 
-# Функции
+# Процедуры, sub, подпрограммы
 
 Функции упрощают работу в скриптах Qlik Sense, но в то же время и усложняют чтение кода
 
@@ -127,3 +129,6 @@ CALL ls_LinkTable ('plan-fact_link', 'table_sales', 'period, id_goods, id_shop')
 CALL ls_LinkTable ('plan-fact_link', 'table_plan', 'period, id_goods, id_shop');
 
 ```
+## Создание календаря
+## Получить таблицу уникальных значений
+## Получить min/max из 1 поля в модели
