@@ -19,3 +19,4 @@ unlisted: true
 - https://bi2business.ru/5-2-krasivye-podpisi-na-vremennoj-osi-derived-fields/
 - https://qlikviewcookbook.com/2024/04/formatting-intervals/
 - https://qlikviewcookbook.com/2023/08/creating-time-groups-in-your-data-model/
+- https://github.com/countnazgul/qlik-internal-codes - список кодов ошибок которые может выдавать Qlik Sense и описание этих ошибок
