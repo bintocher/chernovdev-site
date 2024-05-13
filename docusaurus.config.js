@@ -157,7 +157,10 @@ const config = {
             dark: 'rgb(50, 50, 50)'
           }
         }
-      }
+      }, metadata: [
+        {name: 'keywords', content: 'qlik sense, help qliksense, qliksense help, qlik, help, библиотека, клик, скачать клик, триал клик, кластер клик, qlik sense multinode'},
+        // {name: 'twitter:card', content: 'summary_large_image'},
+      ],
     }),
 };
 
