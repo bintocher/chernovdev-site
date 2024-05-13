@@ -147,6 +147,63 @@ END IF;
 :::
 
 
+## Генерация GUID
+
+### `eGUID` - генерация GUID, просто ,"почти уникально"
+
+При вызове макроподстановки `$(eGUID)` в переменную `vGUID` будет записано значение
+
+
+Код для вставки в скрипт:
+```qvs
+SET eGUID = CALL GetGUID;
+
+SUB GetGUID
+    LET vGUID = KEEPCHAR(NOW(1),'0123456789');
+END SUB;
+
+```
+Пример использования:
+```qvs
+$(eGUID)
+[mytable_$(vGUID)]:
+LOAD
+    ...
+FROM ...
+```
+:::info[Результат выполнения]
+Создается таблица с примерным именем: `mytable_13052024162243`
+:::
+
+### GUID посложнее
+
+В переменную `vGUID` записывается хэш
+
+Код для вставки в скрипт:
+```qvs
+SET eGUID = CALL GetGUID;
+
+SUB GetGUID
+    NOCONCATENATE
+    __temp_table_guid:
+    LOAD KEEPCHAR(LOWER(Hash128(NOW(1))),'0123456789qwertyuiopasdfghjklzxcvbnm') as __guid_field AUTOGENERATE 1;
+    LET vGUID = PEEK('__guid_field');
+    DROP TABLE __temp_table_guid;
+END SUB;
+```
+Пример использования:
+```qvs
+$(eGUID)
+[mytable_$(vGUID)]:
+LOAD
+    ...
+FROM ...
+```
+:::info[Результат выполнения]
+Создается таблица с примерным именем: `mytable_h9htuk5ib52yie`
+:::
+
+
 <!--
 #### бланк для заполнения
 
