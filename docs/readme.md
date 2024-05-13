@@ -13,3 +13,4 @@ sidebar_position: 1
   - блог автора: https://t.me/chernovdev
 - Maksim Mikheikin
 - Andrey Yundin
+- Galina Ershova
