@@ -8,7 +8,7 @@ description: Список изменений
 
 Функции упрощают работу в скриптах Qlik Sense, но в то же время и усложняют чтение кода
 
-## Таблица связей (link table)
+## `LinkTable` Таблица связей (link table)
 
 Известно, что для правильной работы модели данных, таблицы должны быть соединены между собой только 1 полем, а что делать если у нас в 2 или более таблицах от 2 одинаковых полей? Мы же не хотим держать SSyn-таблицы внутри модели? Иначе у нас будут не верные расчёты..
 
@@ -18,12 +18,12 @@ description: Список изменений
 Помните, что функции должны быть написаны в скрипте ранее, чем они будут вызваны.
 Синтаксис:
 ```
-CALL ls_LinkTable ('имя новой или существующей таблицы связей', 'имя таблицы из которой нужно забрать поля', 'поля перечисленные через запятую' );
+CALL LinkTable ('имя новой или существующей таблицы связей', 'имя таблицы из которой нужно забрать поля', 'поля перечисленные через запятую' );
 ```
 Например, написав 2 строчки в коде, мы сделаем связи между 2 таблицами по 3 полям:
 ```
-CALL ls_LinkTable ('plan-fact_link', 'table_sales', 'period, id_goods, id_shop');
-CALL ls_LinkTable ('plan-fact_link', 'table_plan', 'period, id_goods, id_shop');
+CALL LinkTable ('plan-fact_link', 'table_sales', 'period, id_goods, id_shop');
+CALL LinkTable ('plan-fact_link', 'table_plan', 'period, id_goods, id_shop');
 ```
 ![image](/img/script/189489443-57ebaaad-177d-42f8-8f57-5dc24f10ea3a.png)
 
@@ -37,22 +37,11 @@ CALL ls_LinkTable ('plan-fact_link', 'table_plan', 'period, id_goods, id_shop');
 Результат выполнения функции в модели данных:
 ![image](/img/script/189489593-383f5b8b-8b30-41a1-b86c-6117adb193c7.png)
 
+
 ### скрипт функции
 
 ```qvs
-SUB ls_LinkTable (ls_linkTableName, ls_table, ls_fields)
-
-// Создание или обновление таблицы связей.
-//
-// Поля, перечисленные в третьем параметре будут удалены из исходной таблицы, указанной во втором параметре и помещены в таблицу связей, указанной в первом параметре.
-// Если таблица связей не существует, то она будет создана. Если таблица связей существует, то она будет обновлена
-//
-// @параметр1 String: Название новой или существующей таблицы связей.
-// @параметр2 String: Название таблицы, из которой будут загружены поля.
-// @параметр3 String: Названия полей, разделенных запятой которые будут помещены в таблицу связей.
-//
-// @синтаксис: CALL ls_LinkTable('LinkTableName', 'SourceTableName', 'Field1, Field2, ...');
-// @синтаксис: CALL ls_LinkTable('LinkTableName', 'SourceTableName2', 'Field1, Field2, ...');
+SUB LinkTable (ls_linkTableName, ls_table, ls_fields)
 
 // Генерируем произвольное наименование временной таблицы
 LET ls_LinkTableTemp = '$(ls_linkTableName)' & '_temp_' & KEEPCHAR(NOW(),'0123456789');
@@ -100,7 +89,6 @@ LOAD
 AUTOGENERATE 10000
 ;
 
-
 table_plan:
 LOAD
     DATE(FLOOR($(varPeriodStart) + (rand() * 60))) AS period
@@ -110,7 +98,6 @@ LOAD
     , floor(rand() * 20) + 1 AS plan_quant
 AUTOGENERATE 10000
 ;
-
 
 table_goods:
 LOAD
@@ -124,11 +111,102 @@ LOAD
     , 'shop_' & FIELDVALUE ('id_shop', RowNo()) as shop_name
 AUTOGENERATE FIELDVALUECOUNT ('id_shop');
 
-
-CALL ls_LinkTable ('plan-fact_link', 'table_sales', 'period, id_goods, id_shop');
-CALL ls_LinkTable ('plan-fact_link', 'table_plan', 'period, id_goods, id_shop');
+CALL LinkTable ('plan-fact_link', 'table_sales', 'period, id_goods, id_shop');
+CALL LinkTable ('plan-fact_link', 'table_plan', 'period, id_goods, id_shop');
 
 ```
 ## Создание календаря
-## Получить таблицу уникальных значений
-## Получить min/max из 1 поля в модели
+
+## `GetUniqueValues` - Получить таблицу с уникальными значениями по одному полю
+
+Создает таблицу с набором уникальных значений поля (допускается преобразование поля и агрегация)
+
+Параметры:
+- _fieldName - поле в модели (не в конкретной таблице)
+- _tableName - имя таблицы-приемника уникальных значений поля _fieldName
+- _destinationFieldName - имя поля-приемника уникальных значений поля _fieldName
+- _transformOperator - содержит выражение для преобразования значения поля _fieldName.
+
+### примеры использования
+
+Создай таблицу `Factor` из поля `_factorName`, уникальные значения запиши в поле `ExpressFactor_`, примени функцию `NUM()` к этому полю
+```
+Call GetUniqueValues('_factorName', 'Factor', 'ExpressFactor_', 'Num');
+
+```
+
+### скрипт функции
+```
+SUB GetUniqueValues(_fieldName, _tableName, _destinationFieldName, _transformOperator)
+    LET lib_vTransformOperator = $(eDefaultIfEmpty(_transformOperator, ''));
+    LET lib_vExpression = If(Index(lib_vTransformOperator, '{expression}')
+   ,Replace(lib_vTransformOperator, '{expression}', 'FieldValue('&chr(39)&'$(_fieldName)'&chr(39)&', RecNo())')
+   ,lib_vTransformOperator & '(FieldValue('&chr(39)&'$(_fieldName)'&chr(39)&', RecNo()))');
+    LET lib_vDistinctValuesQty = FieldValueCount(_fieldName);
+    NoConcatenate [$(_tableName)]:
+    LOAD Distinct
+        $(lib_vExpression) AS [$(_destinationFieldName)]
+    AutoGenerate $(lib_vDistinctValuesQty);
+    SET lib_vDistinctValuesQty;
+    SET lib_vTransformOperator;
+    SET lib_vExpression;
+END SUB
+```
+
+## `eNumberMinMaxToVariable`, `eNumberMinToVariable`, `eNumberMaxToVariable` - получить min/max из 1 поля в модели в переменную
+
+Процедура для расчета минимального и максимального значений поля
+
+Удобно использовать через макроподстановку: `eNumberMinMaxToVariable`, `eNumberMinToVariable`, `eNumberMaxToVariable`
+Параметры:
+- _field_name поле со значениями
+- _variable_name_[min, max] -переменная - приемник результата
+
+:::tip[Замечание]
+Для работы требует наличие подпрограммы(sub,процедуры) GetUniqueValues
+:::
+
+### примеры использования
+
+Возьми все уникальные значения в поле `FileDate` и запиши результаты в переменные `vMinValue` и `vMaxValue`
+```
+$(eNumberMinMaxToVariable('FileDate', 'vMinValue', 'vMaxValue'));
+```
+Возьми все уникальные значения в поле `FileDate` и запиши результат минимального значения в переменную `vMinValue`
+```
+$(eNumberMinToVariable('FileDate', 'vMinValue'));
+```
+Возьми все уникальные значения в поле `FileDate` и запиши результат максимального значения в переменную `vMaxValue`
+```
+$(eNumberMaxToVariable('FileDate', 'vMaxValue'));
+```
+
+### скрипт функции
+
+```
+// Макроподстановка
+SET eNumberMinMaxToVariable = 'Call GetMinMaxValue($1, $2, $3)';
+SET eNumberMinToVariable = 'Call GetMinValue($1, $2)';
+SET eNumberMaxToVariable = 'Call GetMaxValue($1, $2)';
+
+// Процедура
+SUB GetMinMaxValue(_field_name, _variable_name_min, _variable_name_max)
+    Call GetUniqueValues(_field_name, 'local_space_table_tmp_min_max_value', 'local_space_MaxValue', 'Min({expression}) + 0 AS local_space_MinValue, Max({expression}) + 0');
+    LET $(_variable_name_min) = Peek('local_space_MinValue');
+    LET $(_variable_name_max) = Peek('local_space_MaxValue');
+    DROP TABLE [local_space_table_tmp_min_max_value];
+END SUB
+
+SUB GetMinValue(_field_name, _variable_name_min)
+    Call GetUniqueValues(_field_name, 'local_space_table_tmp_min_value', 'local_space_MinValue', 'Min({expression}) + 0');
+    LET $(_variable_name_min) = Peek('local_space_MinValue');
+    DROP TABLE [local_space_table_tmp_min_value];
+END SUB
+
+SUB GetMaxValue(_field_name, _variable_name_max)
+    Call GetUniqueValues(_field_name, 'local_space_table_tmp_max_value', 'local_space_MaxValue', 'Max({expression}) + 0');
+    LET $(_variable_name_max) = Peek('local_space_MaxValue');
+    DROP TABLE [local_space_table_tmp_max_value];
+END SUB
+
+```
