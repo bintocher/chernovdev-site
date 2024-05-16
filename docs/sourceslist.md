@@ -34,3 +34,4 @@ unlisted: true
 - Добавить информацию по формированию парето (pareto) анализу :
     - https://community.qlik.com/t5/Design/Recipe-for-a-Pareto-Analysis/ba-p/1468497
     - https://blog.atkcg.ru/pareto-analiz-v-qlikview/
+- описать реализацию ABC+XYZ анализа
