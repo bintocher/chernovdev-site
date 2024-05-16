@@ -31,3 +31,6 @@ unlisted: true
 - консольная утилита для работы с Qlik Sense https://github.com/ptarmiganlabs/ctrl-q
 - Butler SOS: DevOps monitoring for Qlik Sense - https://butler-sos.ptarmiganlabs.com/docs/
 - A cache warming tool for Qlik Sense - https://github.com/ptarmiganlabs/butler-cw
+- Добавить информацию по формированию парето (pareto) анализу :
+    - https://community.qlik.com/t5/Design/Recipe-for-a-Pareto-Analysis/ba-p/1468497
+    - https://blog.atkcg.ru/pareto-analiz-v-qlikview/
