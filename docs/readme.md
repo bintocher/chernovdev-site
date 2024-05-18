@@ -14,3 +14,4 @@ sidebar_position: 1
 - Maksim Mikheikin
 - Andrey Yundin
 - Galina Ershova
+- Maksim Molokov

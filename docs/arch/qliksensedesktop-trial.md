@@ -35,3 +35,12 @@ https://github.com/qlik-download/qlik-sense-desktop/releases
 ```
 
 По-умолчанию, при установке Qlik Sense Desktop - папка Trial не создаётся, её нужно создать вручную
+
+### Скачать unlock файл для Qlik Sense Desktop
+
+Переименовывать - не обязательно
+|Активность|Срок действия||
+|---|---|---|
+|✅|до Tue Aug 06 2024 12:27:00 GMT+0000|[🔗](/unlockfiles/082024_Qlik_Sense_Desktop.unlock)
+|❌|до Mon May 13 2024 15:40:25 GMT+0000|[🔗](/unlockfiles/052024_Qlik_Sense_Desktop.unlock)
+|❌|до Tue Feb 13 2024 12:13:34 GMT+0000|[🔗](/unlockfiles/022024_Qlik_Sense_Desktop.unlock)
