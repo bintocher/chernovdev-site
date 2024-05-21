@@ -7,7 +7,7 @@ import Heading from '@theme/Heading';
 import styles from './index.module.css';
 
 function HomepageHeader() {
-  const {siteConfig} = useDocusaurusContext();
+  const { siteConfig } = useDocusaurusContext();
   return (
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
       <div className="container">
@@ -15,27 +15,64 @@ function HomepageHeader() {
           {siteConfig.title}
         </Heading>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
-        {/* <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg"
-            to="/docs/intro">
-            Docusaurus Tutorial - 5min ⏱️
-          </Link>
-        </div> */}
       </div>
+
     </header>
   );
 }
 
 export default function Home(): JSX.Element {
-  const {siteConfig} = useDocusaurusContext();
+  const { siteConfig } = useDocusaurusContext();
   return (
     <Layout
       title={`${siteConfig.title}`}
       description="Qlik library, qlik help, chernov blog, chernodev">
+
       <HomepageHeader />
+      <div align='center'>Авторы проекта
+      <table style={{ width: '600px', height: '250px', border: '0px' }}>
+        <tr>
+          <td align="center">
+            <a href="https://github.com/bintocher">
+              <img src="https://github.com/bintocher.png" width="100;" alt="bintocher" />
+              <br />
+              <sub><b>Chernov Stanislav</b></sub>
+            </a>
+          </td>
+          <td align="center">
+            <a href="https://github.com/MrMaffer">
+              <img src="https://github.com/MrMaffer.png" width="100;" alt="MrMaffer" />
+              <br />
+              <sub><b>Maksim Mikheikin</b></sub>
+            </a>
+          </td>
+          <td align="center">
+            <a href="https://github.com/verlaine-muhungu">
+              <img src="https://github.com/Andrej9173.png" width="100;" alt="Andrej9173" />
+              <br />
+              <sub><b>Andrey Yundin</b></sub>
+            </a>
+          </td>
+          <td align="center">
+            <a href="https://github.com/GalinaErshova">
+              <img src="https://github.com/GalinaErshova.png" width="100;" alt="GalinaErshova" />
+              <br />
+              <sub><b>Galina Ershova</b></sub>
+            </a>
+          </td>
+
+          <td align="center">
+            <a href="https://github.com/MaksimMolokov">
+              <img src="https://github.com/MaksimMolokov.png" width="100;" alt="MaksimMolokov" />
+              <br />
+              <sub><b>Maksim Molokov</b></sub>
+            </a>
+          </td>
+        </tr>
+        </table></div>
       <main>
         <HomepageFeatures />
+
       </main>
     </Layout>
   );

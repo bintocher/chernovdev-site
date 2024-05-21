@@ -21,3 +21,10 @@
   align-items: center;
   justify-content: center;
 }
+
+.tableBanner {
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+  border: 0;
+}
