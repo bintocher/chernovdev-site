@@ -1,3 +1,6 @@
+---
+tags: ['Parquet','Qlik Sense CLI']
+---
 # Parquet-файлы
 
 Начиная с версии QS August 2023, Qlik доработал поддержку .parquet-файлов ([подробнее](https://parquet.apache.org/))
