@@ -2,6 +2,7 @@
 id: themes
 sidebar_position: 100
 keywords: ['тема','css','json']
+tags: ['Themes','CSS','Dense.css','стиль CSS']
 ---
 
 # Как работать с темами в Qlik Sense — краткий гайд
