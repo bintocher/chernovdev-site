@@ -4,4 +4,4 @@
 
 Нам поможет приложение `qliksenseutil.exe`, находится она по пути: `C:\Program Files\Qlik\Sense\Repository\Util\QlikSenseUtil`
 
-![Example banner](/img/arch/photo_2024-05-21_13-02-16.jpg)
+![путь к файлу qliksenseutil.exe с утилитой для Qlik Sense](/img/arch/photo_2024-05-21_13-02-16.jpg)
