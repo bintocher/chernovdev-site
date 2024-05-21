@@ -1,4 +1,6 @@
 ---
+tags: ['ErrorCode','CloseCode','DriveName','ExtendedMessage','MessageCode','WarningCode']
+---
 id: errorcodes
 keywords: [коды ошибок qlik]
 ---
