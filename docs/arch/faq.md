@@ -1,0 +1,7 @@
+# Вопрос-ответ по архитектуре Qlik Sense
+
+## Как поменять адрес сервера с внутренней базой данных(repository) Qlik Sense
+
+Нам поможет приложение `qliksenseutil.exe`, находится она по пути: `C:\Program Files\Qlik\Sense\Repository\Util\QlikSenseUtil`
+
+![Example banner](/img/arch/photo_2024-05-21_13-02-16.jpg)
