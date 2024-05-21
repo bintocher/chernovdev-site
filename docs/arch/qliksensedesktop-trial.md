@@ -1,5 +1,6 @@
 ---
 keywords: [trial,ключ,qliksense desktop,unlock]
+tags: ['Trial Key','Ключ','Qlik Sense','Unlock']
 ---
 # Trial ключ для Qlik Sense desktop
 
