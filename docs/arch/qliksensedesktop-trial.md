@@ -1,3 +1,6 @@
+---
+keywords: [trial,ключ,qliksense desktop,unlock]
+---
 # Trial ключ для Qlik Sense desktop
 
 Где взять ключ для разблокировки Qlik Sense Desktop?
