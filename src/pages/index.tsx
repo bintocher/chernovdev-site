@@ -47,7 +47,7 @@ export default function Home(): JSX.Element {
             </a>
           </td>
           <td align="center">
-            <a href="https://github.com/verlaine-muhungu">
+            <a href="https://github.com/Andrej9173">
               <img src="https://github.com/Andrej9173.png" width="100;" alt="Andrej9173" />
               <br />
               <sub><b>Andrey Yundin</b></sub>
