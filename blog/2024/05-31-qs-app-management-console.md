@@ -8,6 +8,7 @@ date: 2024-05-31
 ---
 
 В этой статье я опишу процесс включения двух, не совсем документированных опций, но тем не менее разработанных в QlikTech специально для Qlik Sense:
+
 - App Management Console
 - Loop&Reduce
 
@@ -27,8 +28,8 @@ date: 2024-05-31
 Внутри папки нас ждёт самый важный файл `README.md`, в котором подробно написано что нужно сделать
 ![описание установки app management console](/img/blog/2024/05-31/3.png)
 
-
 Но я повторюсь:
+
 - нужно открыть QMC -> Content library
 - создать новый объект, назвать его `AMC`
 - внутри объекта перейти в раздел `Contents` и загрузить все файлы из папки `AppManagementConsole`
@@ -38,13 +39,15 @@ date: 2024-05-31
 ![описание установки app management console](/img/blog/2024/05-31/4.png)
 
 После описанных действий переходим по ссылке, и пользуемся `App Management Console`
-```
+
+```text
 http[s]://<servername>/content/AMC/home.html
 ```
 
 ## Включаем `loop&reduce`
 
 Переходим в папку `C:\Program Files\Qlik\Sense\Tools\ExternalProgramTasks\LoopAndReduce`, в котором нам нужно 2 файла:
+
 - документация `Loop and Reduce Document.docx` - читаем и добавляем `security rules` согласно описания
 - js-файл `loop-and-reduce.js` - импортируем в AMC (так же как и разделом выше)
 
