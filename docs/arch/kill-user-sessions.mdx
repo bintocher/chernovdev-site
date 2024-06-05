@@ -1,0 +1,92 @@
+---
+keywords: ['python script kill sessions qlik sense, Доступ к Qlik Sense невозможен из-за большого количества активных сеансов']
+tags: ['python','session','api','сессия',]
+---
+
+# Удаление сессий пользователей python-скриптом
+
+Скрипт позволяет удалить сессии пользователей с Qlik Sense сервера (кластера). Все сессии - без исключения.
+
+Помните сообщение об ошибке: `Доступ к Qlik Sense невозможен из-за большого количества активных сеансов`?
+
+Используем справку Qlik по API:
+- https://help.qlik.com/en-US/sense-developer/apis/ProxyAPI/OpenAPI_Main.generated.html
+- https://help.qlik.com/en-US/sense-developer/Subsystems/ProxyServiceAPI/Content/Sense_ProxyServiceAPI/ProxyServiceAPI-Connect-API-QPS-API-URL.htm
+
+
+## Подготовка
+
+Создайте папку для работы со скриптом, сделайте выгрузку сертификатов с QMC и сохраните их во вложенной папке `certs`
+
+Скопируйте код скрипта (из раздела ниже) в файл.py, например: `main.py`, у вас должна получится такая структура файлов
+
+![дерево папок и файлов](/img/arch/wqVp9mF2HJ.png)
+
+
+Запустите в терминале `python main.py`
+
+
+## Настройки в скрипте
+
+Измените параметры:
+
+- `server_name`: имя сервера (hostname)
+- `userDomain` : домен пользователя для авторизации
+- `userLogin` : пользователь, под которым будет производится авторизация
+
+## Скрипт
+
+```py
+import os
+import requests
+import json
+from urllib3.exceptions import InsecureRequestWarning
+requests.packages.urllib3.disable_warnings(category=InsecureRequestWarning)
+localpath = os.path.dirname(os.path.realpath(__file__))
+
+session = requests.session()
+xrfkey = '0123456789abcdef'
+headers = {"X-Qlik-XrfKey": xrfkey,
+           "Accept": "application/json",
+           "Content-Type": "application/json"}
+
+server_name = 'serverName'
+userDomain = 'myDomain'
+userLogin = 'myUser'
+server_url = f'https://{server_name}:4243/qps'
+
+certs = (
+    os.path.join(localpath , 'certs','client.pem'),
+    os.path.join(localpath , 'certs','client_key.pem'),
+    os.path.join(localpath , 'certs','root.pem'),
+)
+
+
+def get_usersessions(domain,login):
+    path = server_url + f'/user/{domain}/{login}?xrfkey={xrfkey}'
+    payload = { "userDirectory" : domain, "userName" : login }
+    qps = session.get(url=path,headers=headers,cert=certs, data=payload ,verify=False)
+    response = {}
+    if qps.status_code != 404:
+        response = json.loads(qps.content.decode("UTF-8"))
+    else:
+        print (qps.content.decode("UTF-8"))
+        return None
+    return response
+
+
+def delete_usersessions(session_list):
+    for user_session in sessions_list:
+        path = server_url + f'/session/{user_session}?xrfkey={xrfkey}'
+        payload = { "session" : user_session }
+        session.delete(url=path, headers=headers,cert=certs, data=payload ,verify=False)
+
+if __name__ == '__main__':
+    retval = get_usersessions(userDomain,userLogin)
+    sessions_list = []
+    for item in retval:
+        sessions_list.append(item["SessionId"])
+
+    delete_usersessions(sessions_list)
+
+```
