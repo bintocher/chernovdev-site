@@ -45,7 +45,8 @@ https://github.com/qlik-download/qlik-sense-desktop/releases
 Переименовывать - не обязательно
 |Активность|Срок действия||
 |---|---|---|
-|✅|до 05 ноября 2024|[🔗](/unlockfiles/112024_Qlik_Sense_Desktop.unlock)
+|✅|до 3 февраля 2025|[🔗](/unlockfiles/022025_Qlik_Sense_Desktop.unlock)
+|❌|до 05 ноября 2024|[🔗](/unlockfiles/112024_Qlik_Sense_Desktop.unlock)
 |❌|до Tue Aug 06 2024 12:27:00 GMT+0000|[🔗](/unlockfiles/082024_Qlik_Sense_Desktop.unlock)
 |❌|до Mon May 13 2024 15:40:25 GMT+0000|[🔗](/unlockfiles/052024_Qlik_Sense_Desktop.unlock)
 |❌|до Tue Feb 13 2024 12:13:34 GMT+0000|[🔗](/unlockfiles/022024_Qlik_Sense_Desktop.unlock)

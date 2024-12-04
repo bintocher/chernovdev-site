@@ -29,7 +29,7 @@ const config: Config = {
   // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'ru',
-    locales: ['ru'],
+    locales: ['ru','en'],
   },
 
   plugins: [
@@ -85,7 +85,8 @@ const config: Config = {
           label: 'Qlik docs',
         },
         { to: '/docs/tags', label: 'Tags', position: 'left' },
-        { to: '/blog', label: 'Blog', position: 'left' },
+        { to: '/blog', label: 'Блог (ru)', position: 'left' },
+        { to: '/blogen', label: 'Blog (eng)', position: 'left' },
         // {
         //   type: 'localeDropdown',position: 'right',
         // },
