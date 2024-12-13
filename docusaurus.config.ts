@@ -29,7 +29,7 @@ const config: Config = {
   // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'ru',
-    locales: ['ru','en'],
+    locales: ['ru'],
   },
 
   plugins: [
@@ -37,7 +37,7 @@ const config: Config = {
     , 'docusaurus-plugin-image-zoom'
     , [require.resolve('docusaurus-lunr-search'),
     {
-      languages: ['ru', 'en'],
+      languages: ['ru','en'],
       highlightResult: true,
       maxHits: 10,
     }]
@@ -85,8 +85,8 @@ const config: Config = {
           label: 'Qlik docs',
         },
         { to: '/docs/tags', label: 'Tags', position: 'left' },
-        { to: '/blog', label: 'Блог (ru)', position: 'left' },
-        { to: '/blogen', label: 'Blog (eng)', position: 'left' },
+        { to: '/blog', label: 'Блог', position: 'left' },
+        // { to: '/blogen', label: 'Blog (eng)', position: 'left' },
         // {
         //   type: 'localeDropdown',position: 'right',
         // },
