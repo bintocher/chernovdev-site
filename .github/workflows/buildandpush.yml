@@ -26,3 +26,7 @@ jobs:
           rsync -avz --delete \
             -e "ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no" \
             ./build/ ${{ secrets.SSH_USER }}@chernovdev.ru:${{ secrets.SSH_DESTFOLDER }}
+      - name: Debug SSH
+        run: |
+          ls -la ~/.ssh
+          ssh -v -i ~/.ssh/deploy_key ${{ secrets.SSH_USER }}@chernovdev.ru 'pwd'
