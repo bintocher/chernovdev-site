@@ -15,11 +15,14 @@ jobs:
         run: npm ci
       - name: Build docusaurus
         run: npm run docusaurus build
-      - name: 📂 Sync Files
-        uses: SamKirkland/web-deploy@v1
-        with:
-          target-server: chernovdev.ru
-          remote-user: ${{ secrets.SSH_USER }}
-          private-ssh-key: ${{ secrets.SSH_KEY }}
-          destination-path: ${{ secrets.SSH_DESTFOLDER }}
-          rsync-options: --archive --verbose --compress --delete-after --human-readable --exclude=.git* --exclude=.git/ --exclude=README.md --exclude=readme.md --exclude=.gitignore
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H chernovdev.ru >> ~/.ssh/known_hosts
+      - name: Deploy with rsync
+        run: |
+          rsync -avz --delete \
+            -e "ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no" \
+            ./build/ ${{ secrets.SSH_USER }}@chernovdev.ru:${{ secrets.SSH_DESTFOLDER }}
