@@ -1,6 +1,6 @@
 ---
 title: "Скачиваем документы(файлы) из Qlik Sense library"
-description: Куда разместить документация чтобы из QS можно было её скачать?
+description: "Руководство: скачивание файлов (PDF, документов) из приложений Qlik Sense. Настройка Content Library, URL-ссылок в таблицах и текстовых объектах для загрузки."
 authors: chernov
 tags: [qlik sense,  ui, download files, download pdf, download documents]
 hide_table_of_contents: false

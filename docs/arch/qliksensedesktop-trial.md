@@ -1,6 +1,7 @@
 ---
 keywords: [trial,ключ,qliksense desktop,unlock]
 tags: ['Trial Key','Ключ','Qlik Sense','Unlock']
+description: "Нужен trial-ключ для Qlik Sense Desktop? Узнайте, где скачать актуальный unlock-файл и как активировать вашу версию Qlik Sense Desktop для полноценной работы."
 ---
 # Trial ключ для Qlik Sense desktop
 

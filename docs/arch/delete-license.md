@@ -1,6 +1,7 @@
 ---
 keywords: [удалить лицензию qlik sense, лицензия]
 tags: ['license','slk','lef','qlik sense']
+description: "Инструкция по полному удалению лицензий (LEF, SLK) из Qlik Sense Enterprise. SQL-скрипты и шаги для очистки информации о лицензиях из базы данных Qlik."
 ---
 
 # Удаление лицензий из Qlik Sense Enterprise

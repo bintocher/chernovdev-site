@@ -1,6 +1,6 @@
 ---
 title: Loop&Reduce Qlik Sense
-description: Статья описывает как включить Loop&Reduce в Qlik Sense. Нарезка приложений по определенным полям (как в QlikView)
+description: "Как включить Loop&Reduce и App Management Console в Qlik Sense. Пошаговая инструкция по настройке нарезки приложений (аналог QlikView)."
 authors: chernov
 tags: [qlik sense, loop and reduce]
 hide_table_of_contents: false

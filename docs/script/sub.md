@@ -1,7 +1,7 @@
 ---
 sidebar_position: 100
 tags: ['function','функция','sub','процедура']
-description: Список изменений
+description: "Процедуры (sub) в Qlik Sense: LinkTable для таблиц связей, GetUniqueValues для уникальных значений, Min/Max в переменную. Готовые скрипты и примеры."
 ---
 
 # Процедуры, sub, подпрограммы

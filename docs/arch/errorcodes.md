@@ -2,6 +2,7 @@
 id: errorcodes
 keywords: [коды ошибок qlik]
 tags: ['ErrorCode','ExtendedMessage','MessageCode','WarningCode','CloseCode','DriveName']
+description: "Полный справочник кодов ошибок Qlik Sense. Найдите описание и возможные решения для ErrorCode, MessageCode, WarningCode и других ошибок Qlik."
 ---
 
 # Известные коды ошибок Qlik
@@ -171,11 +172,11 @@ tags: ['ErrorCode','ExtendedMessage','MessageCode','WarningCode','CloseCode','Dr
 |ErrorCode|23010|Ошибка zlib в ходе добавления подфайла в файл xlsx.|
 |ErrorCode|23011|Ошибка zlib в ходе закрытия файла xlsx.|
 |ErrorCode|23012|Параметр функции NULL игнорируется.|
-|ErrorCode|23013|Длина строки превышает установленное в программе Excel предельное значение, равное 32 767 символам.|
+|ErrorCode|23013|Длина строки превышает установленное в программе Excel предельное значение, равное 32 767 символам.|
 |ErrorCode|23014|Длина параметра превышает установленное в программе Excel предельное значение, равное 255 символам.|
 |ErrorCode|23015|Ошибка поиска внутреннего индекса строки.|
 |ErrorCode|23016|Индекс строки или столбца листа выходит за пределы диапазона.|
-|ErrorCode|23017|Превышено максимальное количество URL-адресов листа (65 530).|
+|ErrorCode|23017|Превышено максимальное количество URL-адресов листа (65 530).|
 |ErrorCode|24000|ОК|
 |ErrorCode|24001|Ошибка режима Direct Query: {0}|
 |ErrorCode|3|Ресурсы уже существуют.|

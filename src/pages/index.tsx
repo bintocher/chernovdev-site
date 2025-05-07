@@ -26,7 +26,7 @@ export default function Home(): JSX.Element {
   return (
     <Layout
       title={`${siteConfig.title}`}
-      description="Qlik library, qlik help, chernov blog, chernodev">
+      description="ChernovDev: ваш гид по Qlik Sense. Полезные статьи, документация, решения для BI, блог разработчика. Узнайте все о Qlik от экспертов сообщества.">
 
       <HomepageHeader />
       <div align='center'>Авторы проекта

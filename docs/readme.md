@@ -1,6 +1,7 @@
 ---
 id: readme
 sidebar_position: 1
+description: "ChernovDev: неофициальная библиотека знаний по Qlik Sense, NPrinting и другим продуктам Qlik. Советы, инструкции и лучшие практики от экспертов сообщества."
 ---
 
 # ℹ️ О проекте

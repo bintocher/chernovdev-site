@@ -1,5 +1,6 @@
 ---
 tags: ['Parquet','Qlik Sense CLI']
+description: "Работа с Parquet-файлами в Qlik Sense: включение поддержки, сценарии использования, сравнение с QVD. Узнайте, как форматировать и тегировать данные для Parquet."
 ---
 # Parquet-файлы
 
